@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Erfan × Deniz</title>
+<meta name="theme-color" content="#0f0e12">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f0e12;
+    --bg2:#16141a;
+    --gold:#b8995f;
+    --gold-soft:rgba(184,153,95,.35);
+    --text:#efe7d8;
+    --muted:#a99f8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Vazirmatn','Tahoma','DejaVu Sans',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  .latin{
+    direction:ltr;
+    font-family:'Manrope','Helvetica Neue',Arial,sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.32em;
+    color:var(--gold);
+    font-size:.72rem;
+  }
+  a{color:inherit;text-decoration:none}
+  @media(max-width:480px){
+    .top{padding:20px 16px}
+    .top .latin{font-size:.58rem;letter-spacing:.16em}
+  }
+
+  /* top bar */
+  .top{
+    display:flex;justify-content:space-between;align-items:center;direction:ltr;
+    padding:22px 24px;border-bottom:1px solid rgba(184,153,95,.18);
+    background:radial-gradient(ellipse 90% 140% at 50% -40%, rgba(184,153,95,.14), transparent 70%);
+  }
+  .mark{font-family:'Manrope',sans-serif;font-size:1.35rem;letter-spacing:.2em;font-weight:500}
+  .mark b{color:var(--gold);font-weight:400;margin:0 .2em}
+
+  /* hero */
+  .hero{
+    min-height:78vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:64px 24px 48px;
+    background:radial-gradient(ellipse 70% 50% at 50% 0%, rgba(184,153,95,.12), transparent 70%);
+  }
+  .hero .latin{margin-bottom:26px}
+  h1{
+    font-family:'Manrope','Helvetica Neue',Arial,sans-serif;
+    font-weight:500;letter-spacing:-.03em;
+    font-size:clamp(2.8rem,12vw,5.6rem);line-height:1.1;direction:ltr;
+  }
+  h1 .x{color:var(--gold);font-weight:400;margin:0 .12em}
+  .tag{font-size:clamp(1.15rem,4.4vw,1.6rem);margin-top:26px;color:#e3dacb}
+  .rule{width:76px;height:1px;background:var(--gold);margin:40px auto 34px}
+  .intro{color:var(--muted);font-size:1.05rem;max-width:30rem}
+  .btn{
+    display:inline-flex;align-items:center;gap:12px;margin-top:44px;
+    padding:14px 34px;border:1px solid var(--gold);color:var(--text);
+    font-size:1.05rem;transition:background .25s,color .25s;
+  }
+  .btn:hover{background:var(--gold);color:#16120a}
+
+  /* sections */
+  section{padding:56px 22px;max-width:980px;margin:0 auto}
+  .sec-head{text-align:center;margin-bottom:34px}
+  .sec-head .latin{display:block;margin-bottom:8px}
+  .sec-head h2{font-size:1.55rem;font-weight:500}
+
+  .card{
+    border:1px solid var(--gold-soft);background:linear-gradient(180deg,var(--bg2),#121116);
+    padding:26px 24px;
+  }
+  .song{display:flex;gap:18px;align-items:flex-start}
+  .song svg{flex:none;width:34px;height:34px;color:var(--gold);margin-top:4px}
+  .song h3{font-size:1.25rem;font-weight:500;margin:4px 0}
+  .song p{color:var(--muted);font-size:.95rem;margin-bottom:14px}
+  audio{width:100%;height:46px;border-radius:30px;color-scheme:dark}
+
+  /* gallery */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  @media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr);gap:14px}}
+  .ph{
+    position:relative;aspect-ratio:4/5;overflow:hidden;cursor:pointer;
+    border:1px solid rgba(184,153,95,.22);background:var(--bg2);padding:0;
+  }
+  .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s,opacity .4s}
+  .ph:hover img{transform:scale(1.04)}
+  .ph::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(15,14,18,.4);pointer-events:none}
+
+  /* letter */
+  .letter{text-align:center}
+  .letter h3{font-size:1.35rem;font-weight:500;margin:6px 0 6px}
+  .letter p{color:var(--muted);margin-bottom:6px}
+  .letter .btn{margin-top:22px}
+
+  footer{text-align:center;padding:44px 22px 56px;border-top:1px solid rgba(184,153,95,.18);margin-top:30px}
+  footer p{color:var(--muted);font-size:.95rem;margin-top:10px}
+
+  /* lightbox */
+  #lb{
+    position:fixed;inset:0;background:rgba(8,7,10,.95);display:none;
+    align-items:center;justify-content:center;z-index:50;padding:18px;
+  }
+  #lb.open{display:flex}
+  #lb img{max-width:100%;max-height:100%;object-fit:contain;border:1px solid var(--gold-soft)}
+  #lb button{
+    position:absolute;background:none;border:1px solid var(--gold-soft);color:var(--text);
+    width:46px;height:46px;font-size:1.5rem;cursor:pointer;
+  }
+  #lb .close{top:16px;left:16px}
+  #lb .prev{left:12px;top:50%;transform:translateY(-50%)}
+  #lb .next{right:12px;top:50%;transform:translateY(-50%)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <span class="mark">E<b>×</b>D</span>
+  <span class="latin">A Private Collection of Memories</span>
+</header>
+
+<main>
+  <div class="hero">
+    <span class="latin">Two Hearts · One Story</span>
+    <h1>Erfan<span class="x">×</span>Deniz</h1>
+    <p class="tag">بعضی لحظه‌ها برای همیشه می‌مونن.</p>
+    <div class="rule"></div>
+    <p class="intro">این‌جا گوشه‌ای از خاطرات ماست؛<br>لحظه‌هایی که ارزش دوباره دیدن دارن.</p>
+    <a class="btn" href="#memories">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+      ورود به خاطرات
+    </a>
+  </div>
+
+  <section id="song">
+    <div class="card song">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+      <div style="flex:1;min-width:0">
+        <span class="latin">Our Song</span>
+        <h3>آهنگ خاطره‌انگیز ما</h3>
+        <p>برای شنیدنش دکمه‌ی پخش رو بزن.</p>
+        <audio controls preload="none" src="Amir%20Tataloo%20-%20Cheshmam%20Faghat%20Zoome%20Roo%20To%20%28320%29.mp3"></audio>
+      </div>
+    </div>
+  </section>
+
+  <section id="memories">
+    <div class="sec-head">
+      <span class="latin">Memories</span>
+      <h2>خاطرات ما</h2>
+    </div>
+    <div class="grid" id="grid">
+      <button class="ph" aria-label="عکس ۱"><img loading="lazy" decoding="async" src="file_00000000084881f48a78b4523f81cc6c.png" alt="عکس ۱"></button>
+      <button class="ph" aria-label="عکس ۲"><img loading="lazy" decoding="async" src="file_00000000089481f4b9f46874e0570fdc.png" alt="عکس ۲"></button>
+      <button class="ph" aria-label="عکس ۳"><img loading="lazy" decoding="async" src="file_00000000401481f49c60a3f042ceeb29.png" alt="عکس ۳"></button>
+      <button class="ph" aria-label="عکس ۴"><img loading="lazy" decoding="async" src="file_00000000449c81f4af7756f17a310165.png" alt="عکس ۴"></button>
+      <button class="ph" aria-label="عکس ۵"><img loading="lazy" decoding="async" src="file_00000000504c81f4875875b6ac7de10b.png" alt="عکس ۵"></button>
+      <button class="ph" aria-label="عکس ۶"><img loading="lazy" decoding="async" src="file_0000000053ac81f4860d6ad9ab8c0a88.png" alt="عکس ۶"></button>
+      <button class="ph" aria-label="عکس ۷"><img loading="lazy" decoding="async" src="file_00000000814881f4a2220156a24f540d.png" alt="عکس ۷"></button>
+      <button class="ph" aria-label="عکس ۸"><img loading="lazy" decoding="async" src="file_0000000096348210a59da9593e46ff7f.png" alt="عکس ۸"></button>
+      <button class="ph" aria-label="عکس ۹"><img loading="lazy" decoding="async" src="file_00000000bdc8820a823c77b06b1cebec.png" alt="عکس ۹"></button>
+      <button class="ph" aria-label="عکس ۱۰"><img loading="lazy" decoding="async" src="file_00000000c01481f48398087fff9e2a77.png" alt="عکس ۱۰"></button>
+      <button class="ph" aria-label="عکس ۱۱"><img loading="lazy" decoding="async" src="file_00000000ddc481f4863c52d464995b76.png" alt="عکس ۱۱"></button>
+      <button class="ph" aria-label="عکس ۱۲"><img loading="lazy" decoding="async" src="file_00000000eaf08210a151f92d38813be3.png" alt="عکس ۱۲"></button>
+    </div>
+  </section>
+
+  <section id="letter">
+    <div class="card letter">
+      <span class="latin">A Letter For You</span>
+      <h3>نامه‌ای برای دنیز</h3>
+      <p>چند خط از ته دل، برای سالگرد یک‌سالگی‌مون.</p>
+      <a class="btn" href="letter.pdf" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>
+        خواندن نامه
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span class="latin">Erfan × Deniz · Forever</span>
+  <p>ساخته‌شده با عشق، برای دنیز.</p>
+</footer>
+
+<div id="lb" role="dialog" aria-modal="true" aria-label="نمایش عکس">
+  <button class="close" aria-label="بستن">×</button>
+  <button class="prev" aria-label="قبلی">‹</button>
+  <img alt="">
+  <button class="next" aria-label="بعدی">›</button>
+</div>
+
+<script>
+(function(){
+  var imgs = Array.prototype.slice.call(document.querySelectorAll('#grid img'));
+  var lb = document.getElementById('lb');
+  var big = lb.querySelector('img');
+  var cur = 0;
+  function show(i){
+    cur = (i + imgs.length) % imgs.length;
+    big.src = imgs[cur].src;
+    lb.classList.add('open');
+  }
+  function hide(){ lb.classList.remove('open'); big.removeAttribute('src'); }
+  imgs.forEach(function(im, i){ im.parentNode.addEventListener('click', function(){ show(i); }); });
+  lb.querySelector('.close').addEventListener('click', hide);
+  lb.querySelector('.prev').addEventListener('click', function(e){ e.stopPropagation(); show(cur - 1); });
+  lb.querySelector('.next').addEventListener('click', function(e){ e.stopPropagation(); show(cur + 1); });
+  lb.addEventListener('click', function(e){ if (e.target === lb) hide(); });
+  document.addEventListener('keydown', function(e){
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') hide();
+    if (e.key === 'ArrowLeft') show(cur + 1);
+    if (e.key === 'ArrowRight') show(cur - 1);
+  });
+})();
+</script>
+</body>
+</html>
